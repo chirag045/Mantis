@@ -49,7 +49,7 @@ class ViewController: UIViewController {
         
         let indicatorFrame = CGRect(origin: .zero, size: config.cropViewConfig.cropActivityIndicatorSize)
         config.cropViewConfig.cropActivityIndicator = CustomWaitingIndicator(frame: indicatorFrame)
-        config.cropToolbarConfig.toolbarButtonOptions = [.clockwiseRotate, .reset, .ratio, .autoAdjust, .horizontallyFlip]
+        config.cropToolbarConfig.toolbarButtonOptions = .all
         
         if let transformation = transformation {
             config.cropViewConfig.presetTransformationType = .presetInfo(info: transformation)
@@ -100,7 +100,7 @@ class ViewController: UIViewController {
                                        horizontallyFlipped: true,
                                        verticallyFlipped: false)
         
-        config.cropToolbarConfig.toolbarButtonOptions = [.clockwiseRotate, .reset, .ratio, .autoAdjust, .horizontallyFlip]
+        config.cropToolbarConfig.toolbarButtonOptions = .all
         config.cropViewConfig.presetTransformationType = .presetInfo(info: transform)
         config.cropViewConfig.builtInRotationControlViewType = .slideDial()
         
@@ -190,7 +190,7 @@ class ViewController: UIViewController {
         }
         
         var config = Mantis.Config()
-        config.cropToolbarConfig.toolbarButtonOptions = [.clockwiseRotate, .reset, .ratio, .horizontallyFlip, .verticallyFlip]
+        config.cropToolbarConfig.toolbarButtonOptions = .all
         config.cropToolbarConfig.backgroundColor = .white
         config.cropToolbarConfig.foregroundColor = .gray
         config.cropToolbarConfig.ratioCandidatesShowType = .alwaysShowRatioList

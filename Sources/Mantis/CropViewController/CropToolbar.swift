@@ -76,6 +76,11 @@ public final class CropToolbar: UIView, CropToolbarProtocol {
     private var fixedRatioSettingButton: UIButton?
     
     private lazy var cancelButton: UIButton = {
+        if #available(macCatalyst 13.1, iOS 13.0, *) {
+            let button = createOptionButton(withTitle: nil, andAction: #selector(cancel))
+            button.setImage(UIImage(systemName: "xmark.circle.fill"), for: .normal)
+            return button
+        }
         if let icon = iconProvider?.getCancelIcon() {
             let button = createOptionButton(withTitle: nil, andAction: #selector(cancel))
             button.setImage(icon, for: .normal)
