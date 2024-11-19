@@ -203,10 +203,10 @@ public final class CropToolbar: UIView, CropToolbarProtocol {
     public func adjustLayoutWhenOrientationChange() {
         if Orientation.treatAsPortrait {
             optionButtonStackView?.axis = .horizontal
-            optionButtonStackView?.layoutMargins = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
+            optionButtonStackView?.layoutMargins = UIEdgeInsets(top: 0, left: 2, bottom: 0, right: 2)
         } else {
             optionButtonStackView?.axis = .vertical
-            optionButtonStackView?.layoutMargins = UIEdgeInsets(top: 20, left: 0, bottom: 20, right: 0)
+            optionButtonStackView?.layoutMargins = UIEdgeInsets(top: 2, left: 0, bottom: 2, right: 0)
         }
     }
 

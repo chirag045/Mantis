@@ -30,7 +30,6 @@ public struct ToolbarButtonOptions: OptionSet {
                                                    clockwiseRotate,
                                                    reset,
                                                    ratio,
-                                                   alterCropper90Degree,
                                                    horizontallyFlip,
                                                    verticallyFlip]
 }
