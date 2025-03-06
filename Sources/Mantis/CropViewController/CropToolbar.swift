@@ -32,6 +32,7 @@ public final class CropToolbar: UIView, CropToolbarProtocol {
         let button = createOptionButton(withTitle: nil, andAction: #selector(clockwiseRotate))
         let icon = iconProvider?.getClockwiseRotationIcon() ?? ToolBarButtonImageBuilder.rotateCWImage()
         button.setImage(icon, for: .normal)
+        button.tintColor = UIColor(named: "AppIconPinkColor")
         button.accessibilityIdentifier = "ClockwiseRotationButton"
         button.accessibilityLabel = LocalizedHelper.getString("Mantis.Clockwise rotation", value: "Clockwise rotation")
         return button
@@ -50,6 +51,7 @@ public final class CropToolbar: UIView, CropToolbarProtocol {
         let button = createOptionButton(withTitle: nil, andAction: #selector(horizontallyFlip))
         let icon = iconProvider?.getHorizontallyFlipIcon() ?? ToolBarButtonImageBuilder.horizontallyFlipImage()
         button.setImage(icon, for: .normal)
+        button.tintColor = UIColor(named: "AppIconPinkColor")
         button.accessibilityIdentifier = "HorizontallyFlipButton"
         button.accessibilityLabel = LocalizedHelper.getString("Mantis.Horizontally flip", value: "Horizontally flip")
         return button
@@ -97,6 +99,11 @@ public final class CropToolbar: UIView, CropToolbarProtocol {
     }()
 
     private lazy var cropButton: UIButton = {
+        if #available(macCatalyst 13.1, iOS 13.0, *) {
+            let button = createOptionButton(withTitle: nil, andAction: #selector(crop))
+            button.setImage(UIImage(systemName: "checkmark.circle.fill"), for: .normal)
+            return button
+        }
         if let icon = iconProvider?.getCropIcon() {
             let button = createOptionButton(withTitle: nil, andAction: #selector(crop))
             button.setImage(icon, for: .normal)
@@ -220,7 +227,8 @@ public final class CropToolbar: UIView, CropToolbarProtocol {
     }
 
     public func handleFixedRatioUnSetted() {
-        fixedRatioSettingButton?.tintColor = config.foregroundColor
+        //fixedRatioSettingButton?.tintColor = config.foregroundColor
+        fixedRatioSettingButton?.tintColor = UIColor(named: "AppIconPinkColor")
     }
 
     public func handleCropViewDidBecomeResettable() {
@@ -339,6 +347,7 @@ extension CropToolbar {
         if let image = image {
             button = createOptionButton(withTitle: nil, andAction: #selector(reset))
             button.setImage(image, for: .normal)
+            button.tintColor = .systemYellow
         } else {
             let resetText = LocalizedHelper.getString("Mantis.Reset", value: "Reset")
             button = createOptionButton(withTitle: resetText, andAction: #selector(reset))
@@ -353,6 +362,7 @@ extension CropToolbar {
         let button = createOptionButton(withTitle: nil, andAction: #selector(setRatio))
         let icon = iconProvider?.getSetRatioIcon() ?? ToolBarButtonImageBuilder.clampImage()
         button.setImage(icon, for: .normal)
+        button.tintColor = UIColor(named: "AppIconPinkColor")
         button.accessibilityIdentifier = "RatioButton"
         button.accessibilityLabel = LocalizedHelper.getString("Mantis.Aspect ratio", value: "Aspect ratio")
         return button
