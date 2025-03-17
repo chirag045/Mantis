@@ -35,21 +35,22 @@ class CustomizedCropToolbarWithoutList: UIView, CropToolbarProtocol {
         landscapeRatioButton = createOptionButton(withTitle: "16:9", andAction: #selector(setLandscapeRatio))
 
         stackView = UIStackView()
-        addSubview(stackView!)
-        
-        stackView?.translatesAutoresizingMaskIntoConstraints = false
-        stackView?.alignment = .center
-        stackView?.distribution = .fillEqually
-        
-        stackView?.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-        stackView?.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        stackView?.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        stackView?.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        
-        stackView?.addArrangedSubview(cancelButton!)
-        stackView?.addArrangedSubview(portraitRatioButton!)
-        stackView?.addArrangedSubview(landscapeRatioButton!)
-        stackView?.addArrangedSubview(cropButton!)
+        if let stackView = stackView {
+            addSubview(stackView)
+            stackView.translatesAutoresizingMaskIntoConstraints = false
+            stackView.alignment = .center
+            stackView.distribution = .fillEqually
+            
+            stackView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+            stackView.topAnchor.constraint(equalTo: topAnchor).isActive = true
+            stackView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+            stackView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+            
+            stackView.addArrangedSubview(cancelButton!)
+            stackView.addArrangedSubview(portraitRatioButton!)
+            stackView.addArrangedSubview(landscapeRatioButton!)
+            stackView.addArrangedSubview(cropButton!)
+        }
     }
     
     public func handleFixedRatioSetted(ratio: Double) {
